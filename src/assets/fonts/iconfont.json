@@ -1,0 +1,37 @@
+{
+  "id": "2410490",
+  "name": "emb",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "20182972",
+      "name": "user",
+      "font_class": "user",
+      "unicode": "e8c7",
+      "unicode_decimal": 59591
+    },
+    {
+      "icon_id": "20183132",
+      "name": "lock",
+      "font_class": "lock",
+      "unicode": "e8dd",
+      "unicode_decimal": 59613
+    },
+    {
+      "icon_id": "20183168",
+      "name": "resize-up",
+      "font_class": "resize-up",
+      "unicode": "e8e3",
+      "unicode_decimal": 59619
+    },
+    {
+      "icon_id": "20183169",
+      "name": "resize-down",
+      "font_class": "resize-down",
+      "unicode": "e8e4",
+      "unicode_decimal": 59620
+    }
+  ]
+}
