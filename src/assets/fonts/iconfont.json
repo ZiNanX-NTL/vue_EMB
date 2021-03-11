@@ -6,6 +6,55 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "20051003",
+      "name": "交易管理",
+      "font_class": "jiaoyiguanli",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "20051015",
+      "name": "用户管理",
+      "font_class": "yonghuguanli",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "20052227",
+      "name": "详情",
+      "font_class": "xiangqing",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "20052228",
+      "name": "收益管理",
+      "font_class": "shouyiguanli",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "20052229",
+      "name": "文档管理",
+      "font_class": "wendangguanli",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "20052230",
+      "name": "数据分析",
+      "font_class": "shujufenxi",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "20052232",
+      "name": "项目管理",
+      "font_class": "xiangmuguanli",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
       "icon_id": "20182972",
       "name": "user",
       "font_class": "user",
