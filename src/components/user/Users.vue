@@ -339,7 +339,7 @@ export default {
       this.$refs.addFromRef.validate(async (value) => {
         if (!value) return
         const { data: res } = await this.$http.post('users', this.addUserFrom)
-        console.log(res)
+        // console.log(res)
         if (res.meta.status !== 201) return this.$Message.error('添加用户失败!')
         this.$Message.success('添加用户成功!')
         // 关闭添加用户对话框
