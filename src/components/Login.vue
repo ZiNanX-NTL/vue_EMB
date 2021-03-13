@@ -23,8 +23,8 @@
         </el-form-item>
         <!-- 按钮 -->
         <el-form-item class="btns">
-          <el-button type="primary" @click="login">主要按钮</el-button>
-          <el-button  type="info" @click="resetLoginForm">信息按钮</el-button>
+          <el-button type="primary" @click="login">登录</el-button>
+          <el-button  type="info" @click="resetLoginForm">重置</el-button>
         </el-form-item>
 
       </el-form>
@@ -71,7 +71,10 @@ export default {
         if (res.meta.status !== 200) return this.$Message.error('登录失败!')
         this.$Message.success('登录成功!')
         // console.log(res)
+        // 储存token
         window.sessionStorage.setItem('token', res.data.token)
+
+        // 编程式路由跳转
         this.$router.push('/home')
       })
     }

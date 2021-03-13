@@ -79,7 +79,7 @@
             <el-button type="warning"
                        icon="el-icon-setting"
                        size="mini"
-                       @click="showSetRightDialogid(scope.row)">分配权限</el-button>
+                       @click="showSetRightDialog(scope.row)">分配权限</el-button>
           </template>
         </el-table-column>
 
@@ -252,6 +252,7 @@ export default {
       const { data: res } = await this.$http.delete(
         `roles/${role.id}/rights/${rightId}`
       )
+      // console.log(res)  //测试后台取消了接口（取消了对应的路径接口）
 
       if (res.meta.status !== 200) return this.$Message.error('删除权限失败!')
 

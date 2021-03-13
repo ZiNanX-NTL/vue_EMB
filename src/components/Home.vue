@@ -15,12 +15,13 @@
     <el-container>
       <!-- 侧边栏 -->
       <el-aside :width="isCollapse ? '64px' : '200px'">
-        <div class="toggle-button" @click="toggleCollapse">|||</div>
+        <div class="toggle-button"
+             @click="toggleCollapse">|||</div>
         <el-menu :unique-opened="true"
-                  :collapse="isCollapse"
-                  :collapse-transition= "false"
-                  :router="true"
-                  :default-active="activePath"
+                 :collapse="isCollapse"
+                 :collapse-transition="false"
+                 :router="true"
+                 :default-active="activePath"
                  background-color="#333744"
                  text-color="#fff"
                  active-text-color="#ffd04b">
@@ -37,8 +38,8 @@
 
             </template>
             <!-- 二级菜单 -->
-            <el-menu-item :index="'/' + subitem.path"
-                          v-for="subitem in item.children"
+            <el-menu-item v-for="subitem in item.children"
+                          :index="'/' + subitem.path"
                           :key="subitem.id"
                           @click="saveNavState('/' + subitem.path)">
               <template #title>
@@ -136,12 +137,12 @@ export default {
 }
 .el-aside {
   background-color: #333744;
-  transition: width .5s;
-  .toggle-button{
+  transition: width 0.5s;
+  .toggle-button {
     width: 100%;
     height: 30px;
     color: #fff;
-    background-color: #4A5064;
+    background-color: #4a5064;
     text-align: center;
     line-height: 30px;
     font-size: 13px;
