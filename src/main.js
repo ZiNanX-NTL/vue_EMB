@@ -7,6 +7,9 @@ import './assets/fonts/iconfont.css'
 // 全局样式
 import './assets/css/global.css'
 
+// 引入表格插件
+import TreeTabel from 'vue-table-with-tree-grid'
+
 import axios from 'axios'
 // 配置请求的默认根路径
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
@@ -20,6 +23,9 @@ axios.interceptors.request.use(config => {
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false
+
+// 全局组册表格插件
+Vue.component('tree-tabel', TreeTabel)
 
 new Vue({
   router,

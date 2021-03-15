@@ -91,25 +91,25 @@
                width="30%"
                @close="addDialogClose">
       <!-- 主体 -->
-      <el-form :model="addUserFrom"
-               :rules="UserRules"
-               ref="addFromRef"
+      <el-form :model="addUserForm"
+               :rules="userRules"
+               ref="addFormRef"
                label-width="70px">
         <el-form-item label="用户名"
                       prop="username">
-          <el-input v-model="addUserFrom.username"></el-input>
+          <el-input v-model="addUserForm.username"></el-input>
         </el-form-item>
         <el-form-item label="密码"
                       prop="password">
-          <el-input v-model="addUserFrom.password"></el-input>
+          <el-input v-model="addUserForm.password"></el-input>
         </el-form-item>
         <el-form-item label="邮箱"
                       prop="email">
-          <el-input v-model="addUserFrom.email"></el-input>
+          <el-input v-model="addUserForm.email"></el-input>
         </el-form-item>
         <el-form-item label="手机"
                       prop="mobile">
-          <el-input v-model="addUserFrom.mobile"></el-input>
+          <el-input v-model="addUserForm.mobile"></el-input>
         </el-form-item>
       </el-form>
       <!-- 底部按钮 -->
@@ -128,21 +128,21 @@
                width="30%"
                @close="editDialogClose">
       <!-- 主体 -->
-      <el-form ref="editFromRef"
-               :model="editFrom"
-               :rules="UserRules"
+      <el-form ref="editFormRef"
+               :model="editForm"
+               :rules="userRules"
                label-width="80px">
         <el-form-item label="用户名">
-          <el-input v-model="editFrom.username"
+          <el-input v-model="editForm.username"
                     disabled></el-input>
         </el-form-item>
         <el-form-item label="邮箱"
                       prop="email">
-          <el-input v-model="editFrom.email"></el-input>
+          <el-input v-model="editForm.email"></el-input>
         </el-form-item>
         <el-form-item label="密码"
                       prop="mobile">
-          <el-input v-model="editFrom.mobile"></el-input>
+          <el-input v-model="editForm.mobile"></el-input>
         </el-form-item>
       </el-form>
       <!-- 底部按钮 -->
@@ -227,14 +227,14 @@ export default {
       editDialogVisible: false,
 
       // 添加用户表单数据
-      addUserFrom: {
+      addUserForm: {
         username: '',
         password: '',
         email: '',
         mobile: ''
       },
       // 添加用户表单的规则
-      UserRules: {
+      userRules: {
         username: [
           { required: true, message: '请输入用户名', trigger: 'blur' },
           {
@@ -264,7 +264,7 @@ export default {
       },
 
       // 获取的修改用户信息,双向绑定
-      editFrom: {},
+      editForm: {},
 
       // 控制分配角色对话框显示隐藏
       allotDialogVisible: false,
@@ -331,14 +331,14 @@ export default {
 
     // 监听关闭添加用户对话框
     addDialogClose () {
-      this.$refs.addFromRef.resetFields()
+      this.$refs.addFormRef.resetFields()
     },
 
     // 点击确定,预校验,添加用户
     addUser () {
-      this.$refs.addFromRef.validate(async (value) => {
+      this.$refs.addFormRef.validate(async (value) => {
         if (!value) return
-        const { data: res } = await this.$http.post('users', this.addUserFrom)
+        const { data: res } = await this.$http.post('users', this.addUserForm)
         // console.log(res)
         if (res.meta.status !== 201) return this.$Message.error('添加用户失败!')
         this.$Message.success('添加用户成功!')
@@ -354,26 +354,26 @@ export default {
       const { data: res } = await this.$http.get('users/' + id)
       if (res.meta.status !== 200) return this.$Message.error('请求数据失败!')
       // console.log(res.data)
-      this.editFrom = res.data
+      this.editForm = res.data
       this.editDialogVisible = true
     },
 
     // 监听关闭修改用户信息对话框
     editDialogClose () {
-      this.$refs.editFromRef.resetFields()
+      this.$refs.editFormRef.resetFields()
     },
 
     // 修改用户信息并提交
     editUserInfo () {
       // 预验证
-      this.$refs.editFromRef.validate(async (value) => {
+      this.$refs.editFormRef.validate(async (value) => {
         if (!value) return
         // 发起修改用户信息的请求
         const { data: res } = await this.$http.put(
-          'users/' + this.editFrom.id,
+          'users/' + this.editForm.id,
           {
-            email: this.editFrom.email,
-            mobile: this.editFrom.mobile
+            email: this.editForm.email,
+            mobile: this.editForm.mobile
           }
         )
 
