@@ -50,11 +50,11 @@
           </template>
         </el-table-column>
         <el-table-column label="操作">
-          <template slot-scope="">
+          <template slot-scope="scope">
             <el-button size="mini"
                        type="primary"
                        icon="el-icon-edit"
-                       @click="showEditDialog"></el-button>
+                       @click="showEditDialog(scope.row)"></el-button>
             <el-button size="mini"
                        type="success"
                        icon="el-icon-location"
@@ -240,10 +240,10 @@ export default {
         params: this.queryInfo
       })
       if (res.meta.status !== 200) {
-        return this.$Message.error('请求订单列表失败!')
+        return this.$message.error('请求订单列表失败!')
       }
 
-      this.$Message.success('请求订单列表成功!')
+      this.$message.success('请求订单列表成功!')
       console.log(res.data)
       this.total = res.data.total
       this.orderList = res.data.goods
@@ -262,7 +262,7 @@ export default {
     },
 
     // 显示修改地址对话框
-    showEditDialog () {
+    showEditDialog (row) {
       this.addressDialogVisible = true
     },
 
@@ -276,7 +276,7 @@ export default {
     //   const { data: res } = await this.$http.get('/kuaidi/1106975712662')
     //   console.log(res)
     //   if (res.meta.status !== 200) {
-    //     return this.$Message.error('获取物流进度失败!')
+    //     return this.$message.error('获取物流进度失败!')
     //   }
 
       //   this.progressInfo = res.data

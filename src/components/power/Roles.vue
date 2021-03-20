@@ -228,7 +228,7 @@ export default {
     async getRolesList () {
       const { data: res } = await this.$http.get('roles')
       if (res.meta.status !== 200) {
-        return this.$Message.error('请求角色列表失败!')
+        return this.$message.error('请求角色列表失败!')
       }
 
       // console.log(res.data)
@@ -247,17 +247,17 @@ export default {
         }
       ).catch((err) => err)
 
-      if (result !== 'confirm') return this.$Message.info('取消了删除')
+      if (result !== 'confirm') return this.$message.info('取消了删除')
 
       const { data: res } = await this.$http.delete(
         `roles/${role.id}/rights/${rightId}`
       )
       // console.log(res)  //测试后台取消了接口（取消了对应的路径接口）
 
-      if (res.meta.status !== 200) return this.$Message.error('删除权限失败!')
+      if (res.meta.status !== 200) return this.$message.error('删除权限失败!')
 
       // 提示
-      this.$Message.success('删除权限成功!')
+      this.$message.success('删除权限成功!')
       // 更新权限数据
       role.children = res.data
     },
@@ -270,7 +270,7 @@ export default {
       // 获取当前角色的所有数据
       const { data: res } = await this.$http.get('rights/tree')
       if (res.meta.status !== 200) {
-        return this.$Message.error('请求权限列表失败!')
+        return this.$message.error('请求权限列表失败!')
       }
 
       this.rightList = res.data
@@ -315,10 +315,10 @@ export default {
         }
       )
       if (res.meta.status !== 200) {
-        return this.$Message.error('分配角色权限失败!')
+        return this.$message.error('分配角色权限失败!')
       }
 
-      this.$Message.success('分配角色权限成功!')
+      this.$message.success('分配角色权限成功!')
       this.getRolesList()
       this.setRightDialogVisible = false
     },
@@ -331,9 +331,9 @@ export default {
     // 添加角色
     async addRole () {
       const { data: res } = await this.$http.post('roles', this.addRoleFrom)
-      if (res.meta.status !== 201) return this.$Message.error('添加角色失败!')
+      if (res.meta.status !== 201) return this.$message.error('添加角色失败!')
 
-      this.$Message.success('添加角色成功!')
+      this.$message.success('添加角色成功!')
       this.getRolesList()
       this.addRoleDialogVisble = false
     },
@@ -356,13 +356,13 @@ export default {
         }
       ).catch((err) => err)
 
-      if (result !== 'confirm') return this.$Message.info('您取消了删除')
+      if (result !== 'confirm') return this.$message.info('您取消了删除')
 
       const { data: res } = await this.$http.delete('roles/' + id)
-      if (res.meta.status !== 200) return this.$Message.error('删除角色失败!')
+      if (res.meta.status !== 200) return this.$message.error('删除角色失败!')
 
       this.getRolesList()
-      this.$Message.success('已删除该角色!')
+      this.$message.success('已删除该角色!')
     },
 
     // 展示编辑角色对话框
@@ -384,9 +384,9 @@ export default {
           roleDesc: this.roleInfo.roleDesc
         })
 
-        if (res.meta.status !== 200) this.$Message.error('编辑角色失败!')
+        if (res.meta.status !== 200) this.$message.error('编辑角色失败!')
 
-        this.$Message.success('编辑角色成功!')
+        this.$message.success('编辑角色成功!')
         this.getRolesList()
         this.editRoleDialogVisible = false
       })

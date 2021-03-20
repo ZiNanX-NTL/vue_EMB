@@ -51,10 +51,11 @@
         </template>
         <!-- 操作 -->
         <template slot="opt"
-                  slot-scope="">
+                  slot-scope="scope">
           <el-button type="primary"
                      icon="el-icon-edit"
-                     size="mini">编辑</el-button>
+                     size="mini"
+                     @click="hanldClick(scope.row)">编辑</el-button>
           <el-button type="danger"
                      icon="el-icon-delete"
                      size="mini">删除</el-button>
@@ -267,6 +268,11 @@ export default {
       this.selectedKeys = []
       this.addCateForm.cat_pid = 0
       this.addCateForm.cat_level = 0
+    },
+
+    // 操作
+    hanldClick (row) {
+      console.log(row)
     }
   }
 }

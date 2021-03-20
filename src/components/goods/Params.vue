@@ -242,7 +242,7 @@ export default {
     async getCateList () {
       const { data: res } = await this.$http.get('categories')
       if (res.meta.status !== 200) {
-        return this.$Message.error('获取商品分类失败!')
+        return this.$message.error('获取商品分类失败!')
       }
 
       this.cateList = res.data
@@ -279,7 +279,7 @@ export default {
         }
       )
       if (res.meta.status !== 200) {
-        return this.$Message.error('获取商品参数列表失败!')
+        return this.$message.error('获取商品参数列表失败!')
       }
 
       // 处理attr_vals数据
@@ -319,9 +319,9 @@ export default {
             attr_sel: this.activeName
           }
         )
-        if (res.meta.status !== 201) return this.$Message.error('添加参数失败!')
+        if (res.meta.status !== 201) return this.$message.error('添加参数失败!')
 
-        this.$Message.success('添加参数成功!')
+        this.$message.success('添加参数成功!')
         this.getParamsData()
         this.addDialogVisible = false
       })
@@ -336,7 +336,7 @@ export default {
         }
       )
       if (res.meta.status !== 200) {
-        return this.$Message.error('获取修改参数失败!')
+        return this.$message.error('获取修改参数失败!')
       }
 
       this.editForm = res.data
@@ -355,9 +355,9 @@ export default {
             attr_sel: this.activeName
           }
         )
-        if (res.meta.status !== 200) return this.$Message.error('修改参数失败!')
+        if (res.meta.status !== 200) return this.$message.error('修改参数失败!')
 
-        this.$Message.success('修改参数成功!')
+        this.$message.success('修改参数成功!')
         this.getParamsData()
         this.editDialogVisible = false
       })
@@ -381,14 +381,14 @@ export default {
       ).catch((err) => err)
 
       // 用户取消了删除操作
-      if (confirmResult !== 'confirm') { return this.$Message.info('已取消了删除!') }
+      if (confirmResult !== 'confirm') { return this.$message.info('已取消了删除!') }
 
       const { data: res } = await this.$http.delete(
         `categories/${this.cateId}/attributes/${attrid}`
       )
-      if (res.meta.status !== 200) return this.$Message.error('删除参数失败!')
+      if (res.meta.status !== 200) return this.$message.error('删除参数失败!')
 
-      this.$Message.success('删除参数成功!')
+      this.$message.success('删除参数成功!')
       this.getParamsData()
     },
 
@@ -416,9 +416,9 @@ export default {
         attr_sel: row.attr_sel,
         attr_vals: row.attr_vals.join(' ')
       })
-      if (res.meta.status !== 200) return this.$Message.error('修改参数失败!')
+      if (res.meta.status !== 200) return this.$message.error('修改参数失败!')
 
-      this.$Message.success('修改参数成功!')
+      this.$message.success('修改参数成功!')
     },
 
     // 显示文本输入框事件

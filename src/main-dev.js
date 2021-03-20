@@ -17,14 +17,26 @@ import 'quill/dist/quill.core.css' // import styles
 import 'quill/dist/quill.snow.css' // for snow theme
 import 'quill/dist/quill.bubble.css' // for bubble theme
 
+// 导入Nprogress 对应的js 和 css
+import Nprogress from 'nprogress'
+import 'nprogress/nprogress.css'
+
 import axios from 'axios'
 // 配置请求的默认根路径
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
+
 // 设置请求拦截器
+// 在request 拦截器中展示进度条 Nprogress.start()
 axios.interceptors.request.use(config => {
+  Nprogress.start()
   // console.log(config)
   config.headers.Authorization = window.sessionStorage.getItem('token')// 请求处理,每次请求携带token令牌
   return config// 请求数据
+})
+// 在response 拦截器中隐藏进度条 Nprogress.done()
+axios.interceptors.response.use(config => {
+  Nprogress.done()
+  return config
 })
 
 Vue.prototype.$http = axios

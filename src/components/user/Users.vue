@@ -321,10 +321,10 @@ export default {
       )
       if (res.meta.status !== 200) {
         userinfo.mg_state = !userinfo.mg_state
-        return this.$Message.error('用户状态改变失败!')
+        return this.$message.error('用户状态改变失败!')
       }
 
-      this.$Message.success('用户状态改变成功!')
+      this.$message.success('用户状态改变成功!')
       // console.log(userinfo)
       // console.log(res)
     },
@@ -340,8 +340,8 @@ export default {
         if (!value) return
         const { data: res } = await this.$http.post('users', this.addUserForm)
         // console.log(res)
-        if (res.meta.status !== 201) return this.$Message.error('添加用户失败!')
-        this.$Message.success('添加用户成功!')
+        if (res.meta.status !== 201) return this.$message.error('添加用户失败!')
+        this.$message.success('添加用户成功!')
         // 关闭添加用户对话框
         this.addDialogVisible = false
         // 更新数据
@@ -352,7 +352,7 @@ export default {
     // 展示修改用户信息对话框
     async showEditDialog (id) {
       const { data: res } = await this.$http.get('users/' + id)
-      if (res.meta.status !== 200) return this.$Message.error('请求数据失败!')
+      if (res.meta.status !== 200) return this.$message.error('请求数据失败!')
       // console.log(res.data)
       this.editForm = res.data
       this.editDialogVisible = true
@@ -377,14 +377,14 @@ export default {
           }
         )
 
-        if (res.meta.status !== 200) { return this.$Message.error('更新用户信息失败!') }
+        if (res.meta.status !== 200) { return this.$message.error('更新用户信息失败!') }
 
         // 关闭对话框
         this.editDialogVisible = false
         // 更新页面
         this.getUserList()
         // 提示成功
-        this.$Message.success('更新用户信息成功!')
+        this.$message.success('更新用户信息成功!')
       })
     },
 
@@ -400,15 +400,15 @@ export default {
         }
       ).catch((err) => err)
 
-      if (result !== 'confirm') return this.$Message.info('您取消了删除')
+      if (result !== 'confirm') return this.$message.info('您取消了删除')
 
       const { data: res } = await this.$http.delete('users/' + id)
-      if (res.meta.status !== 200) return this.$Message.error('删除用户失败!')
+      if (res.meta.status !== 200) return this.$message.error('删除用户失败!')
 
       // 更新页面
       this.getUserList()
       // 提示成功
-      this.$Message.success('已删除该用户')
+      this.$message.success('已删除该用户')
     },
 
     // 展示分配角色对话框
@@ -419,7 +419,7 @@ export default {
 
       // 显示对话框之前,获取角色列表数据
       const { data: res } = await this.$http.get('roles')
-      if (res.meta.status !== 200) return this.$Message.error('获取角色列表失败!')
+      if (res.meta.status !== 200) return this.$message.error('获取角色列表失败!')
       // console.log(res.data)
 
       this.roleList = res.data
@@ -428,14 +428,14 @@ export default {
 
     // 点击按钮,分配角色
     async saveRoleInfo () {
-      if (!this.selectedRoleId) return this.$Message.error('请选择角色!')
+      if (!this.selectedRoleId) return this.$message.error('请选择角色!')
       const { data: res } = await this.$http.put(`users/${this.userInfo.id}/role`, {
         rid: this.selectedRoleId
       })
 
-      if (res.meta.status !== 200) return this.$Message.error('分配角色失败!')
+      if (res.meta.status !== 200) return this.$message.error('分配角色失败!')
 
-      this.$Message.success('分配角色成功!')
+      this.$message.success('分配角色成功!')
       this.getUserList()
       this.allotDialogVisible = false
     },

@@ -38,5 +38,5 @@ Vue.use(CheckboxGroup)
 Vue.use(Upload)
 Vue.use(Timeline)
 Vue.use(TimelineItem)
-Vue.prototype.$Message = Message
+Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm

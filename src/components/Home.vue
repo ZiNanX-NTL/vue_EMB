@@ -30,7 +30,7 @@
                       v-for="item in menulist"
                       :key="item.id">
             <!-- 一级菜单模板 -->
-            <template #title>
+            <template slot="title">
               <!-- 图标 -->
               <i :class="iconsObj[item.id]"></i>
               <!-- 描述 -->
@@ -42,7 +42,7 @@
                           :index="'/' + subitem.path"
                           :key="subitem.id"
                           @click="saveNavState('/' + subitem.path)">
-              <template #title>
+              <template slot="title">
                 <!-- 图标 -->
                 <i class="el-icon-menu"></i>
                 <!-- 描述 -->
@@ -105,9 +105,9 @@ export default {
     // 获取左侧的菜单
     async getMenuList () {
       const { data: res } = await this.$http.get('menus')
-      if (res.meta.status !== 200) return this.$Message.error('获取数据失败!')
+      if (res.meta.status !== 200) return this.$message.error('获取数据失败!')
       this.menulist = res.data
-      // console.log(res)
+      console.log(res)
     }
   }
 }

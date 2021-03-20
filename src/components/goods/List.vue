@@ -44,10 +44,11 @@
         </el-table-column>
         <el-table-column width="130px"
                          label="操作">
-          <template slot-scope="">
+          <template slot-scope="scope">
             <el-button size="mini"
                        type="primary"
-                       icon="el-icon-edit"></el-button>
+                       icon="el-icon-edit"
+                       @click="handleClick(scope.row)"></el-button>
             <el-button size="mini"
                        type="danger"
                        icon="el-icon-delete"></el-button>
@@ -96,9 +97,9 @@ export default {
       const { data: res } = await this.$http.get('goods', {
         params: this.queryInfo
       })
-      if (res.meta.status !== 200) { return this.$Message.error('获取商品列表失败！') }
+      if (res.meta.status !== 200) { return this.$message.error('获取商品列表失败！') }
 
-      this.$Message.success('获取商品列表成功！')
+      this.$message.success('获取商品列表成功！')
       // console.log(res.data)
       this.goodsList = res.data.goods
       this.total = res.data.total
@@ -119,6 +120,11 @@ export default {
     // 跳转至添加商品的页面
     goAddPage () {
       this.$router.push('/goods/add')
+    },
+
+    // 操作
+    handleClick (row) {
+      console.log(row)
     }
   }
 }
